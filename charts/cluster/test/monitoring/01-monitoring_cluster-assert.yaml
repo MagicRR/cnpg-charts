@@ -113,6 +113,16 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: monitoring-cluster-alert-rules
+spec:
+  groups:
+    - name: cloudnative-pg/monitoring-cluster
+      rules:
+        - (alert): CNPGClusterOffline
+          labels:
+            severity: critical
+            cnpg_cluster: monitoring-cluster
+            environment: staging
+            oncall: "false"
 ---
 apiVersion: v1
 kind: ConfigMap
