@@ -116,13 +116,10 @@ metadata:
 spec:
   groups:
     - name: cloudnative-pg/monitoring-cluster
-      rules:
-        - (alert): CNPGClusterOffline
-          labels:
-            severity: critical
-            cnpg_cluster: monitoring-cluster
-            environment: staging
-            oncall: "false"
+      ~.rules:
+        labels:
+          environment: staging
+          oncall: "false"
 ---
 apiVersion: v1
 kind: ConfigMap
